@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Blank </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +11,28 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <ion-item *ngFor="let i of fakeItems">
+      <ion-label>Field {{i}}</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pick date</ion-label>
+      <ion-input
+        value="{{ date | date: 'dd.MM.yyyy' }}"
+        id="date"
+        class="ion-text-end"
+        readonly="true"
+      ></ion-input>
+      <ion-popover trigger="date" size="cover">
+        <ng-template>
+          <ion-datetime
+            presentation="date"
+            [(ngModel)]="date"
+            locale="sl-SI"
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
   </div>
 </ion-content>
